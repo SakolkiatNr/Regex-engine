@@ -8,14 +8,8 @@ function matchOne(pattern, text) {
     return pattern === text;
 }
 
-// matchOne('a', 'a');
-// matchOne('.', 'z');
-// matchOne('', 'h');
-// matchOne('a', 'b');
-// matchOne('p', '');
-
 // Matching same length strings
-function match(pettern, text) {
+function match(pattern, text) {
     // base case
     if (pattern === '') return true;
     else
