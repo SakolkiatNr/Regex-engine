@@ -46,3 +46,4 @@ function search(pattern, text) {
     }
 }
 
+search("ab?c", "abc");
