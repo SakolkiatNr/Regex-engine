@@ -53,3 +53,11 @@ function search(pattern, text) {
         return match(".*" + pattern, text);
     }
 }
+
+
+// Example usages
+search("^a.b", "acb");
+search("a?b", "b");
+search("a*", "aaaa");
+search("a*b", "aaab");
+search("b$", "aaab");
