@@ -8,8 +8,19 @@ function matchOne(pattern, text) {
     return pattern === text;
 }
 
-matchOne('a', 'a');
-matchOne('.', 'z');
-matchOne('', 'h');
-matchOne('a', 'b');
-matchOne('p', '');
+// matchOne('a', 'a');
+// matchOne('.', 'z');
+// matchOne('', 'h');
+// matchOne('a', 'b');
+// matchOne('p', '');
+
+// Matching same length strings
+function match(pettern, text) {
+    // base case
+    if (pattern === '') return true;
+    else
+    // invoke matchOne on successive pairs of characters from the pattern
+        return (
+            matchOne(pattern[0], text[0]) && match(pattern.slice(1), text.slice(1))
+        );
+}
