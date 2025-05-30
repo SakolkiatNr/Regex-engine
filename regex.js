@@ -13,11 +13,24 @@ function match(pattern, text) {
     // base case
     if (pattern === '') return true;
     if (pattern === '$' && text === "") return true;
-    else
-    // invoke matchOne on successive pairs of characters from the pattern
+    else if (pattern[1] === "?") {
+        return matchQuestion(pattern, text);
+    } else {
         return (
+            // invoke matchOne on successive pairs of characters from the pattern using recursive 
             matchOne(pattern[0], text[0]) && match(pattern.slice(1), text.slice(1))
         );
+    }
+}
+function matchQuestion(pattern, text) {
+    // Needs to handle 2 case
+    // 1. Where the character before ? is not matched but the text matches the remainder of the pattern (eg. ?abc)
+    // 2. Where the character before ? is matched and the rest of the text matches the remainder of the pattern (eg. a?abc)
+    
+    return (
+        (matchOne(pattern[0], text[0]) && match(pattern.slice(2), text.slice(1)))  || 
+        match(pattern.slice(2), text)
+    )    
 }
 
 // Match the beginning of a string
@@ -32,3 +45,4 @@ function search(pattern, text) {
         });
     }
 }
+
